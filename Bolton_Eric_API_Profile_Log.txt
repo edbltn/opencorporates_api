@@ -1,0 +1,76 @@
+API Profile Process Log
+Eric Bolton
+2/6/18
+
+[01/30/18 01:38:46 PM] Set up environment with the files twitch_api.py and 
+twitch_credentials.py
+[01/30/18 01:40:51 PM] Began reading 
+https://dev.twitch.tv/docs/authentication#registration
+[01/30/18 01:42:49 PM] Set up application "Eric Bolton's Twitch Search" at 
+https://dev.twitch.tv/dashboard/apps/create
+[01/30/18 01:52:17 PM] Switching to new API, the Twitch only seems to provide 
+data for personal use cases
+[01/30/18 02:18:10 PM] Have chosen the opencorporates API.
+[01/30/18 02:36:53 PM] Usage without API keys is restricted to usage limits, so 
+I'm creating an account at https://opencorporates.com/api_accounts/new
+[01/30/18 02:38:33 PM] Signing up with a 'Public Benefit' account
+[01/30/18 02:41:33 PM] Setting up account under organization 'Columbia 
+University' and url 'https://www.columbia.edu'
+[01/30/18 03:12:51 PM] API key info will be provided within the next 48 hours, 
+so I won't be able to use it.
+[01/30/18 04:07:39 PM] The opencorporates API lets you perform GET requests. I 
+read up on how to do these at 
+https://www.geeksforgeeks.org/get-post-requests-using-python/
+[01/30/18 04:42:33 PM] Performed sample API request for 'Bunge Ltd.' in browser 
+to acquaint myself with format of data: 
+https://api.opencorporates.com/companies/bm/20791. *I found the company ID and 
+country code for ‘Bunge Ltd.’ by searching for it on the regular opencorporates 
+search at: https://opencorporates.com/
+[01/30/18 04:44:28 PM] Performed sample API search with 'country_code' set to 
+'bm' *According to the opencorporates API Reference 
+(https://api.opencorporates.com/documentation/API-Reference) country code is 
+simply the two-letter ISO code for that country (‘bm’ for Bermuda).
+[01/30/18 05:10:40 PM] Attempted to perform API search with 
+'incorporation_date' but failed because it requires an API token. *According to 
+the ‘Date filter’ entry in the opencorporates API Reference, date ranges can be 
+specified using the format ‘YYYY-MM-DD:YYYY-MM-DD’. Omitting either start or 
+end date (i.e. ‘:YYYY-MM-DD’ or ‘YYYY-MM-DD:’ corresponds to any date before 
+the specified end date, or after the specified start date.
+[01/30/18 05:54:24 PM] Attempted to perform API search for Bunge Ltd.'s network 
+with Performed sample API search for Bunge Ltd.'s statements with 
+https://api.opencorporates.com/v0.4/companies/bm/20791/network. Request 
+returned no network elements
+[01/30/18 06:15:59 PM] Attempted to perform searches for many large companies' 
+networks. Did not find any for which opencorporates maintained data.
+[01/30/18 06:29:13 PM] Performed sample API search for Bunge Ltd.'s statements 
+with https://api.opencorporates.com/v0.4/companies/bm/20791/statements
+[01/30/18 07:01:15 PM] Performed sample API search for CEOs in Bermuda, 
+returned nothing: 
+https://api.opencorporates.com/v0.4/officers/search?jurisdiction_code=bm&positio
+n=ceo
+[01/30/18 07:14:06 PM] Performed sample API search for officers named 'Michael 
+Bloomberg' in New York state with 
+https://api.opencorporates.com/v0.4/officers/search?jurisdiction_code=us_ny&q=bl
+oomberg *US states are defined as separate jurisdictions, in which case the ISO 
+3166-2 code is used.
+[02/05/18 10:51:58 PM] Created Jupyter notebook to contain revised API Profile.
+[02/05/18 11:25:18 PM] Obtained API Token for opencorporates (unavailable last 
+time). I received an e-mail approving my request roughly 24 hours after 
+submitting it. I found the Token by signing into opencorporates, then going to 
+‘https://opencorporates.com/users/account'
+[02/05/18 11:32:53 PM] Added clarification to [01/30/18 04:42:33 PM] and 
+[01/30/18 04:42:33 PM] log entries.
+[02/05/18 11:43:16 PM] Added clarification to [01/30/18 05:10:40 PM]  log entry.
+[02/06/18 12:04:09 AM] Finished formatting Profile into markdown.
+[02/06/18 12:06:15 AM] Learned how to print JSON keys at: 
+https://stackoverflow.com/questions/15789059/python-json-only-get-keys-in-first-
+level
+[02/06/18 12:27:39 AM] Defined function “printkeys” that makes JSON object 
+format much more readable. Choosing to only print keys of first entries in 
+lists, since different entries can have different properties, leading to 
+different JSON objects.
+[02/06/18 01:51:42 PM] Found list of ISO country codes at 
+‘http://www.nationsonline.org/oneworld/country_code_list.htm'
+[02/06/18 01:53:50 PM] Parsed JSON results for Query 1 again to see which 
+fields were typically left empty.
+[02/06/18 02:28:23 PM] Repeated above exercise for Queries 2 and 3.
